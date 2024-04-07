@@ -1,9 +1,18 @@
 "use strict";
 
 const moment = require("moment");
-const createClient = require("hafas-client");
-const profile = require("hafas-client/p/db");
 const arrayDiff = require("arr-diff");
+
+let createClient = null;
+
+(async () => {
+  createClient = await import('hafas-client').then(mod => mod.createClient)
+})().catch(console.error)
+
+let profile = null;
+(async () => {
+  profile = await import("hafas-client/p/db/index.js").then(mod => mod.profile)
+})().catch(console.error)
 
 
 module.exports = class HafasFetcher {
@@ -64,7 +73,7 @@ module.exports = class HafasFetcher {
     };
 
     return this.hafasClient.departures(this.config.stationID, options)
-      .then((departures) => {
+      .then(({ departures }) => {
         let maxElements = this.config.maxReachableDepartures + this.config.maxUnreachableDepartures;
         let filteredDepartures = this.filterByTransportationTypes(departures);
         filteredDepartures = this.filterByIgnoredLines(filteredDepartures);

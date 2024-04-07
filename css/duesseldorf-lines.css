@@ -1,16 +1,21 @@
 
-.str701, .str706 {
+.str701, .str706, .str705 {
   background-color: red;
-  color: white;
+  color: var(--color-text-dimmed);
   opacity: 0.4;
 }
 
 .bus835, .bus836, .bus723, .bus827, .bus893, .bus77350 {
   background-color: #F8C623;
-  color: white;
+  color: var(--color-text-dimmed);
   opacity: 0.4;
 }
 
 .bus835, .bus836 {
   opacity: 1;
+  color: var(--color-text-bright);
+}
+
+.pthSign {
+  color: var(--color-text-bright);
 }

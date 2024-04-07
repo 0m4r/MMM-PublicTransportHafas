@@ -33,7 +33,7 @@
   "dependencies": {
     "arr-diff": "^4.0.0",
     "array-unique": "^0.3.2",
-    "hafas-client": "latest"
+    "hafas-client": "^6.3.0"
   },
   "devDependencies": {
     "eslint": "^7.21.0",
